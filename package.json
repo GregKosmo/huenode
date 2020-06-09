@@ -1,0 +1,24 @@
+{
+  "name": "huenode",
+  "version": "1.0.0",
+  "description": "Node.js HUE bridge proxy",
+  "main": "Code/app.js",
+  "scripts": {
+    "build": "tsc",
+    "build-watch": "tsc --watch",
+    "start": "node Code/app.js",
+    "start-watch": "nodemon Code/app.js",
+    "build-start": "npm run build-watch && npm run start-watch",
+    "deploy": "scp -r Code pi@192.168.1.31: && npm run restart",
+    "restart": "ssh pi@192.168.1.31 sudo shutdown -r",
+    "shutdown": "ssh pi@192.168.1.31 sudo shutdown"
+  },
+  "author": "Gregory Kosmacek",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.0.2"
+  },
+  "dependencies": {
+    "suncalc": "^1.8.0"
+  }
+}
